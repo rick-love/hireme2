@@ -1,0 +1,31 @@
+﻿@model IEnumerable<HireMe2.Models.Candidate>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Candidates</h2>
+@if (!Model.Any())
+{
+    <p>No Candidates yet!</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Candidate</th>
+                <th>MembershipType</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var candidate in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(candidate.Name, "Details", "Candidates", new { id = candidate.Id }, null)</td>
+                    <td>@candidate.MembershipType.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

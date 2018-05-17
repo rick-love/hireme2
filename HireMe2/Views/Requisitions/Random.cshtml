@@ -1,0 +1,20 @@
+﻿@model HireMe2.ViewModels.RandomCandidateViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Requisitions</h2>
+
+@if(Model.Requisitions.Count == 0)
+{
+    <p>No req's</p>
+}
+else
+{
+    <ul>
+        @foreach (var requisition in Model.Requisitions)
+        <li>@requisition.Title</li>
+    </ul>
+}
+

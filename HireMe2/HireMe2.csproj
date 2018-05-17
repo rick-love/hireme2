@@ -190,16 +190,56 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RequisitionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805170719007_InitialModel.cs" />
+    <Compile Include="Migrations\201805170719007_InitialModel.Designer.cs">
+      <DependentUpon>201805170719007_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170732028_WillRecieveRequisitionPosting.cs" />
+    <Compile Include="Migrations\201805170732028_WillRecieveRequisitionPosting.Designer.cs">
+      <DependentUpon>201805170732028_WillRecieveRequisitionPosting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170739181_MembershipType.cs" />
+    <Compile Include="Migrations\201805170739181_MembershipType.Designer.cs">
+      <DependentUpon>201805170739181_MembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170741418_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201805170741418_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201805170741418_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170759316_ApplyAnnotations.cs" />
+    <Compile Include="Migrations\201805170759316_ApplyAnnotations.Designer.cs">
+      <DependentUpon>201805170759316_ApplyAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170829272_NameToMembershipType.cs" />
+    <Compile Include="Migrations\201805170829272_NameToMembershipType.Designer.cs">
+      <DependentUpon>201805170829272_NameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805171021081_SetName.cs" />
+    <Compile Include="Migrations\201805171021081_SetName.Designer.cs">
+      <DependentUpon>201805171021081_SetName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805171136453_AddBirthdateToCandidate.cs" />
+    <Compile Include="Migrations\201805171136453_AddBirthdateToCandidate.Designer.cs">
+      <DependentUpon>201805171136453_AddBirthdateToCandidate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\changedStructure.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Requisition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RandomCandidateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -258,6 +298,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Requisitions\Random.cshtml" />
+    <None Include="Views\Candidates\Details.cshtml" />
+    <None Include="Views\Candidates\Index.cshtml" />
+    <None Include="Views\Requisitions\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +319,32 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805170719007_InitialModel.resx">
+      <DependentUpon>201805170719007_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170732028_WillRecieveRequisitionPosting.resx">
+      <DependentUpon>201805170732028_WillRecieveRequisitionPosting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170739181_MembershipType.resx">
+      <DependentUpon>201805170739181_MembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170741418_PopulateMembershipTypes.resx">
+      <DependentUpon>201805170741418_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170759316_ApplyAnnotations.resx">
+      <DependentUpon>201805170759316_ApplyAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170829272_NameToMembershipType.resx">
+      <DependentUpon>201805170829272_NameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805171021081_SetName.resx">
+      <DependentUpon>201805171021081_SetName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805171136453_AddBirthdateToCandidate.resx">
+      <DependentUpon>201805171136453_AddBirthdateToCandidate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

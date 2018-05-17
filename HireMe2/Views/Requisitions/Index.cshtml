@@ -1,0 +1,22 @@
+﻿@model IEnumerable<HireMe2.Models.Requisition>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Requisitions</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Requisition</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var requisition in Model)
+        {
+            <tr>
+                <td>@requisition.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
