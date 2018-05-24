@@ -1,0 +1,12 @@
+﻿@model HireMe2.Models.Requisition
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<ul>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Date Òpened: @Model.DateOpened</li>
+    <li>Number of Openings: @Model.NumberOfOpenings</li>
+</ul>

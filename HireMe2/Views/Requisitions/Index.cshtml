@@ -15,7 +15,8 @@
         @foreach (var requisition in Model)
         {
             <tr>
-                <td>@requisition.Title</td>
+                <td>@Html.ActionLink(requisition.Title, "Details", "Requisitions", new { id = requisition.Id}, null)</td>
+                <td>@requisition.Genre.Name</td>
             </tr>
         }
     </tbody>

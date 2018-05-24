@@ -229,10 +229,23 @@
     <Compile Include="Migrations\201805171136453_AddBirthdateToCandidate.Designer.cs">
       <DependentUpon>201805171136453_AddBirthdateToCandidate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805240809237_AddRequisition.cs" />
+    <Compile Include="Migrations\201805240809237_AddRequisition.Designer.cs">
+      <DependentUpon>201805240809237_AddRequisition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240816565_AddGenres.cs" />
+    <Compile Include="Migrations\201805240816565_AddGenres.Designer.cs">
+      <DependentUpon>201805240816565_AddGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240841217_AddGenres2.cs" />
+    <Compile Include="Migrations\201805240841217_AddGenres2.Designer.cs">
+      <DependentUpon>201805240841217_AddGenres2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\changedStructure.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -301,6 +314,7 @@
     <Content Include="Views\Requisitions\Random.cshtml" />
     <None Include="Views\Candidates\Details.cshtml" />
     <None Include="Views\Candidates\Index.cshtml" />
+    <Content Include="Views\Requisitions\Details.cshtml" />
     <None Include="Views\Requisitions\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
   </ItemGroup>
@@ -345,6 +359,15 @@
     <EmbeddedResource Include="Migrations\201805171136453_AddBirthdateToCandidate.resx">
       <DependentUpon>201805171136453_AddBirthdateToCandidate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240809237_AddRequisition.resx">
+      <DependentUpon>201805240809237_AddRequisition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240816565_AddGenres.resx">
+      <DependentUpon>201805240816565_AddGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240841217_AddGenres2.resx">
+      <DependentUpon>201805240841217_AddGenres2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -360,7 +383,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52017</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
