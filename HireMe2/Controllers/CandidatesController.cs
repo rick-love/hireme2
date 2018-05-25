@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HireMe2.Models;
+using HireMe2.ViewModels;
 
 namespace HireMe2.Controllers
 {
@@ -20,6 +21,37 @@ namespace HireMe2.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CandidateFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+
+            return View("CandidateForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Candidate candidate)
+        {
+
+            _context.Candidates.Add(candidate);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Candidates");
+            //if (candidate.Id == 0)
+            //    _context.Candidates.Add(candidate);
+
+            //else
+            //{
+            //    var InDb = _context.Candidates.Single(c => c.Id == candidate.Id);
+
+            //}
+
+            //return View();
         }
 
 
@@ -38,6 +70,22 @@ namespace HireMe2.Controllers
                 return HttpNotFound();
 
             return View(candidate);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var candidate = _context.Candidates.SingleOrDefault(c => c.Id == id);
+
+            if (candidate == null)
+                return HttpNotFound();
+
+            var viewModel = new CandidateFormViewModel
+            {
+                Candidate = candidate,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CandidateForm", viewModel);
         }
     }
 }

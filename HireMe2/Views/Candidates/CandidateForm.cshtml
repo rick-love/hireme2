@@ -1,0 +1,29 @@
+﻿@model HireMe2.ViewModels.CandidateFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Candidate</h2>
+
+@using (Html.BeginForm("Create", "Candidates"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Candidate.Name)
+        @Html.TextBoxFor(m => m.Candidate.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Candidate.Birthdate)
+        @Html.TextBoxFor(m => m.Candidate.Birthdate, "{0:d MMM yyyy }", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Candidate.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Candidate.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Candidate.WillReceiveRequisitionPosting)  Will recieve Email Newsletter?
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
