@@ -22,39 +22,7 @@ namespace HireMe2.Controllers
         {
             _context.Dispose();
         }
-
-        public ActionResult New()
-        {
-            var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new CandidateFormViewModel
-            {
-                MembershipTypes = membershipTypes
-            };
-
-            return View("CandidateForm", viewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Create(Candidate candidate)
-        {
-
-            _context.Candidates.Add(candidate);
-            _context.SaveChanges();
-
-            return RedirectToAction("Index", "Candidates");
-            //if (candidate.Id == 0)
-            //    _context.Candidates.Add(candidate);
-
-            //else
-            //{
-            //    var InDb = _context.Candidates.Single(c => c.Id == candidate.Id);
-
-            //}
-
-            //return View();
-        }
-
-
+        
         public ViewResult Index()
         {
             var candidates = _context.Candidates.Include(c => c.MembershipType).ToList();
@@ -72,6 +40,17 @@ namespace HireMe2.Controllers
             return View(candidate);
         }
 
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CandidateFormViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+
+            return View("CandidateForm", viewModel);
+        }
+
         public ActionResult Edit(int id)
         {
             var candidate = _context.Candidates.SingleOrDefault(c => c.Id == id);
@@ -86,6 +65,28 @@ namespace HireMe2.Controllers
             };
 
             return View("CandidateForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Candidate candidate)
+        {
+            if (candidate.Id == 0)
+                _context.Candidates.Add(candidate);
+
+            else
+            {
+                var candidateInDb = _context.Candidates.Single(c => c.Id == candidate.Id);
+
+                candidateInDb.Name = candidate.Name;
+                candidateInDb.Birthdate = candidate.Birthdate;
+                candidateInDb.MembershipTypeId = candidate.MembershipTypeId;
+                candidateInDb.WillReceiveRequisitionPosting = candidate.WillReceiveRequisitionPosting;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Candidates");
+
         }
     }
 }

@@ -42,13 +42,5 @@ namespace HireMe2.Controllers
             return View(requisition);
         }
 
-        private IEnumerable<Requisition> GetRequisitions()
-        {
-            return new List<Requisition>
-            {
-                new Requisition { Id = 1, Title = "Java Developer"},
-                new Requisition { Id = 2, Title = "React Developer"}
-            };
-        }
     }
 }
