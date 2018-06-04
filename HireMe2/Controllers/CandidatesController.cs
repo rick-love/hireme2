@@ -45,6 +45,7 @@ namespace HireMe2.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CandidateFormViewModel
             {
+                Candidate = new Candidate(),
                 MembershipTypes = membershipTypes
             };
 
@@ -70,6 +71,17 @@ namespace HireMe2.Controllers
         [HttpPost]
         public ActionResult Save(Candidate candidate)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CandidateFormViewModel
+                {
+                    Candidate = candidate,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CandidateForm", viewModel);
+            }
+
             if (candidate.Id == 0)
                 _context.Candidates.Add(candidate);
 
