@@ -69,6 +69,7 @@ namespace HireMe2.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Candidate candidate)
         {
             if (!ModelState.IsValid)
