@@ -14,11 +14,16 @@ namespace HireMe2.Models
         [StringLength(255)]
         public string Title { get; set; }
 
-        [Required]
         public Genre Genre { get; set; }
-        public byte GenreId { get; set; }
-        public string DateOpened { get; set; }
 
+        [Display(Name = "Genre")]
+        [Required]
+        public byte GenreId { get; set; }
+
+        public DateTime DateOpened { get; set; }
+
+        [Display(Name = "Number of Openings")]
+        [Range(1, 10)]
         public byte NumberOfOpenings { get; set; }
     }
 }

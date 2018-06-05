@@ -42,5 +42,68 @@ namespace HireMe2.Controllers
             return View(requisition);
         }
 
+        public ViewResult New()
+        {
+            var genres = _context.Genres.ToList();
+
+            var viewModel = new RequisitionFormViewModel
+            {
+                Genres = genres
+            };
+
+            return View("RequisitionForm", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var requisition = _context.Requisitions.SingleOrDefault(c => c.Id == id);
+
+            if (requisition == null)
+                return HttpNotFound();
+
+            var viewModel = new RequisitionFormViewModel(requisition)
+            {
+
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("RequisitionForm", viewModel);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Requisition requisition)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new RequisitionFormViewModel(requisition)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("RequisitionForm", viewModel);
+            }
+
+            if(requisition.Id == 0)
+            {
+                requisition.DateOpened = DateTime.Now;
+                _context.Requisitions.Add(requisition);
+
+            }
+            else
+            {
+                var requisitionInDb = _context.Requisitions.Single(m => m.Id == requisition.Id);
+                requisitionInDb.Title = requisition.Title;
+                requisitionInDb.GenreId = requisition.GenreId;
+                requisitionInDb.NumberOfOpenings = requisition.NumberOfOpenings;
+                requisitionInDb.DateOpened = requisition.DateOpened;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Requisitions");
+        }
+
     }
 }
