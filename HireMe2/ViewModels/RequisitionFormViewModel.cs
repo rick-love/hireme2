@@ -23,7 +23,7 @@ namespace HireMe2.ViewModels
 
         [Display(Name = "Date Opened")]
         [Required]
-        public DateTime DateOpened { get; set; }
+        public DateTime? DateOpened { get; set; }
 
         [Display(Name = "Number Of Openings")]
         [Range(1, 10)]
