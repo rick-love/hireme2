@@ -11,6 +11,7 @@ namespace HireMe2.Models
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var candidate = (Candidate)validationContext.ObjectInstance;
+
             if (candidate.MembershipTypeId == MembershipType.Unknown ||
                 candidate.MembershipTypeId == MembershipType.PayAsYouGo)
                 return ValidationResult.Success;
